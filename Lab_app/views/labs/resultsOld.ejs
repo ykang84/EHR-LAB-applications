@@ -1,0 +1,80 @@
+<%include ../partials/header%>
+<header class="jumbotron danger">
+    <div class = "container">
+        <h1><i class="fas fa-heartbeat"></i> Lab information</h1>
+
+        <h4>Welcome to Team Random Lab Information Portal  <i class="fa fa-medkit" aria-hidden="true"></i></h4>
+        <hr style="background: white; height: 1px; width: 100%; border: 0">
+        <p>
+          <a type="button" class="btn btn-danger btn-lg" href="/"><i class="fa fa-cog fa-spin  fa-fw"></i> Make a new lab order </a>
+          <a type="button" class="btn btn-warning btn-lg" href="/lab/search">Search for lab order <i class="fa fa-search" aria-hidden="true"></i></a></p>
+    </div>
+</header>
+<div>
+    <!--here are the information for patient-->
+    <h2 class = "text-primary"> Patient information:</h2>
+    <table class = "table table-hover table-responsive table-bordered">
+      <tr>
+        <td class = "info col-md-3">Name</td>
+        <td class = "success col-md-9"><%= patient.name.given%> <%= patient.name.family%></td>
+      </tr>
+      <tr>
+        <td class = "info col-md-3">Patient ID</td>
+        <td class = "success col-md-9"><%= patient.patientId%></td>
+      </tr>
+      <tr>
+        <td class = "info col-md-3">Date of Birth</td>
+        <td class = "success col-md-9"><%= patient.DOB%> </td>
+      </tr>
+    </table>
+
+    <hr>
+    <!--here are the information for labs:-->
+    <h2 class = "text-primary"> Lab information:</h2>
+
+    <div class= "container">
+      <h3 > Lab test results for <strong class = 'text-danger'><%= patient.name.given%> <%= patient.name.family%></strong>. </h3>
+      <h3> patient ID is : <%=lab.patientId%>.</h3>
+      <!-- here add tables by ejs -->
+      <%if (lab.labs.length > 0) { %>
+      <h3> <em><strong class = 'text-danger'> <%=lab.labs.length%> </strong>lab records were founded in our system:</em> </h3>
+        <!--for loop to all lab results in tables-->
+        <% lab.labs.forEach (function (item) { %>
+          <!-- here show each individual lab tests -->
+          <table class="table table-hover table-responsive table-bordered">
+            <tr class = "danger">
+              <th class="col-md-3">Item</th>
+              <th>Values and Description</th>
+            </tr>
+            <% var itemPairs = Object.entries(item) %>
+            <% itemPairs.forEach(function(key_value){ %>
+                <%if (key_value [0] != 'result') { %>
+                  <tr class = "info">
+                    <td class="col-md-3"><em><%=key_value [0]%></em></td>
+                    <td><%=key_value [1]%></td>
+                  </tr>
+                <%} else { %>
+                  <% var reslutsPairs = Object.entries (key_value [1])%>
+                  <% reslutsPairs.forEach (function(results){ %>
+                    <tr class = "success">
+                      <td class="col-md-3"><em><%=results [0]%></em></td>
+                      <td><%=results [1]%></td>
+                    </tr>
+                  <% });%>
+                <%}%>
+
+            <%}); %>
+          </table>
+
+          <hr>
+        <% });%>
+      <% } else { %>
+        <p class = 'text-warning'> <em> No lab record were found for this patient. </em> </p>
+      <%}%>
+
+
+
+    </div>
+
+</div>
+<%include ../partials/footer%>

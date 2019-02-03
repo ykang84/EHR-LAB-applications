@@ -1,0 +1,75 @@
+<!--show a table which allow input patient information -->
+<%include ../partials/header%>
+
+<div class = "container">
+<header >
+
+
+        <div class="w3-panel w3-deep-orange">
+          <h1><%=info%></h1>
+        </div>
+
+</header>
+<hr style="width: 100%; color: black; height: 5px; background-color:black;">
+
+  <!--major difference between fhir and ehr are here -->
+
+  <%if (patientInfo && patientInfo.length >0 ) { %>
+    <%patientInfo.forEach (function (patient) { %>
+      <table class = "table table-hover table-responsive table-bordered">
+        <tr class = "w3-green">
+          <th class = "col primary " colspan="2">Patient Information</th>
+        </tr>
+        <%if (patient.PatientID){ %>
+          <tr>
+            <td class = "col-md-3 info"><strong><em>patient ID</em></strong></td>
+            <td class = "col-md-9 success"><%= patient.PatientID%></td>
+          </tr>
+        <%}%>
+        <%if (patient.GivenName){ %>
+          <tr>
+            <td class = "col-md-3 info"><strong><em>Given Name</em></strong></td>
+            <td class = "col-md-9 success"><%= patient.GivenName%></td>
+          </tr>
+        <%}%>
+        <%if (patient.FamilyName){ %>
+          <tr>
+            <td class = "col-md-3 info"><strong><em>Family Name</em></strong></td>
+            <td class = "col-md-9 success"><%= patient.FamilyName%></td>
+          </tr>
+        <%}%>
+        <%if (patient.Gender){ %>
+          <tr>
+            <td class = "col-md-3 info"><strong><em>Gender</em></strong></td>
+            <td class = "col-md-9 success"><%= patient.Gender%></td>
+          </tr>
+        <%}%>
+        <%if (patient.DateOfBirth){ %>
+          <tr>
+            <td class = "col-md-3 info"><strong><em>Birth Date</em></strong></td>
+            <td class = "col-md-9 success"><%= patient.DateOfBirth%></td>
+          </tr>
+        <%}%>
+        <%if (patient.lastUpdated){ %>
+          <tr>
+            <td class = "col-md-3 info"><strong><em>LastUpdated</em></strong></td>
+            <td class = "col-md-9 success"><%= patient.lastUpdated%></td>
+          </tr>
+        <%}%>
+        <%if (patient.healthInfomation){ %>
+          <tr>
+            <td class = "col-md-3 info"><strong><em>Health Information</em></strong></td>
+            <td class = "col-md-9 success"><%= patient.healthInfomation%></td>
+          </tr>
+        <%}%>
+
+      </table>
+      <hr style="background: black; height: 5px; width: 100%; border: 0">
+    <% })%>
+
+  <%}else { %>
+    <p>no patient was found</p>
+  <%}%>
+
+</div>
+<%include ../partials/footer%>

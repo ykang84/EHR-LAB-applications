@@ -1,0 +1,93 @@
+<!--show a table which allow input patient information -->
+<%include ../partials/header%>
+<div class = "container">
+<header >
+
+
+        <div class="w3-panel w3-deep-orange">
+          <h1><%=info%></h1>
+        </div>
+
+</header>
+<hr style="width: 100%; color: black; height: 5px; background-color:black;">
+
+
+
+  <!--major difference between fhir and ehr are here -->
+
+  <%if (patientInfo && patientInfo.total >0 ) { %>
+    <%patientInfo.entry.forEach (function (patient) { %>
+      <table class = "table table-hover table-responsive table-bordered">
+        <tr class = "w3-green">
+          <th class = "col primary " colspan="2">Patient Information</th>
+        </tr>
+        <%if (patient.resource.id){ %>
+          <tr>
+            <td class = "col-md-3 info"><strong><em>Patient ID</em></strong></td>
+            <td class = "col-md-9 success"><%= patient.resource.id%></td>
+          </tr>
+        <%}%>
+        <%if (patient.resource.name[0].given[0]){ %>
+          <tr>
+            <td class = "col-md-3 info"><strong><em>Given Name</em></strong></td>
+            <td class = "col-md-9 success"><%= patient.resource.name[0].given[0]%></td>
+          </tr>
+        <%}%>
+        <%if (patient.resource.name[0].family){ %>
+          <tr>
+            <td class = "col-md-3 info"><strong><em>Family Name</em></strong></td>
+            <td class = "col-md-9 success"><%= patient.resource.name[0].family%></td>
+          </tr>
+        <%}%>
+        <%if (patient.resource.gender){ %>
+          <tr>
+            <td class = "col-md-3 info"><strong><em>Gender</em></strong></td>
+            <td class = "col-md-9 success"><%= patient.resource.gender%></td>
+          </tr>
+        <%}%>
+        <%if (patient.resource.birthDate){ %>
+          <tr>
+            <td class = "col-md-3 info"><strong><em>Birth Date</em></strong></td>
+            <td class = "col-md-9 success"><%= patient.resource.birthDate%></td>
+          </tr>
+        <%}%>
+        <%if (patient.resource.resourceType){ %>
+          <tr>
+            <td class = "col-md-3 info"><strong><em>resourceType</em></strong></td>
+            <td class = "col-md-9 success"><%= patient.resource.resourceType%></td>
+          </tr>
+        <%}%>
+        <%if (patient.fullUrl){ %>
+          <tr>
+            <td class = "col-md-3 info"><strong><em>fullUrl</em></strong></td>
+            <td class = "col-md-9 success"><%= patient.fullUrl%></td>
+          </tr>
+        <%}%>
+        <%if (patient.resource.meta.versionId){ %>
+          <tr>
+            <td class = "col-md-3 info"><strong><em>versionId</em></strong></td>
+            <td class = "col-md-9 success"><%= patient.resource.meta.versionId%></td>
+          </tr>
+        <%}%>
+        <%if (patient.resource.meta.lastUpdated){ %>
+          <tr>
+            <td class = "col-md-3 info"><strong><em>lastUpdated</em></strong></td>
+            <td class = "col-md-9 success"><%= patient.resource.meta.lastUpdated%></td>
+          </tr>
+        <%}%>
+        <%if (patient.resource.text.status){ %>
+          <tr>
+            <td class = "col-md-3 info"><strong><em>status</em></strong></td>
+            <td class = "col-md-9 success"><%=patient.resource.text.status%></td>
+          </tr>
+        <%}%>
+      </table>
+      <hr style="background: black; height: 5px; width: 100%; border: 0">
+    <% })%>
+
+  <%}else { %>
+    <p>no patient was found</p>
+  <%}%>
+
+</div>
+<%include ../partials/footer%>

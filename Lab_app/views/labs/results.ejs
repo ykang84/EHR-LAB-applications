@@ -1,0 +1,101 @@
+<%include ../partials/header%>
+<header class="jumbotron danger">
+    <div class = "container">
+        <h1><i class="fas fa-heartbeat"></i> Lab information</h1>
+
+        <h4>Welcome to Team Random Lab Information Portal  <i class="fa fa-medkit" aria-hidden="true"></i></h4>
+        <hr style="background: white; height: 1px; width: 100%; border: 0">
+        <p>
+          <a type="button" class="btn btn-danger btn-lg" href="/"><i class="fa fa-cog fa-spin  fa-fw"></i> Make a new lab order </a>
+          <a type="button" class="btn btn-warning btn-lg" href="/lab/search">Search for lab order <i class="fa fa-search" aria-hidden="true"></i></a></p>
+    </div>
+</header>
+<div class = "container">
+    <!--loop through labs to make sure patient id and lab id match then show data-->
+    <%let patientFound = 0; let labFound = 0; %>
+    <% labs.forEach(function (lab) { %>
+      <!--if lab patient id and lab id match then display-->
+      <%if (patientId == lab.patient.identifier ||patientId == "ALL") {%>
+        <%patientFound = 1;%>
+        <% if (labId == lab.identifier || labId == "ALL") { %>
+          <%labFound = 1;%>
+          <h3 class = "text-primary">Lab information (lab ID: <%= lab.identifier%>) for <%= lab.patient.name%> (patient ID: <%=lab.patient.identifier%>): </h3>
+          <!--display patent information-->
+          <table class = "table table-hover table-responsive table-bordered">
+            <tr>
+              <th class = "col primary text-info" colspan="2">Patient Information</th>
+            </tr>
+            <tr>
+              <td class = "col-md-3 danger"><strong><em>Name</em></strong></td>
+              <td class = "col-md-9 danger"><%= lab.patient.name%></td>
+            </tr>
+            <tr>
+              <td class = "col-md-3 danger"><strong><em>Patient ID</em></strong></td>
+              <td class = "col-md-9 danger"><%= lab.patient.identifier%></td>
+            </tr>
+            <tr>
+              <th class = "col primary text-info" colspan="2">Lab Information</th>
+            </tr>
+            <%Object.entries(lab).forEach (function (key_value_array){ %>
+              <%if (key_value_array[0] != "patient" && key_value_array[0] != "performer" && key_value_array[1] != ''){ %>
+                <tr>
+                  <td class = "col-md-3 success"><strong><em><%=key_value_array[0]%></em></strong></td>
+                  <td class = "col-md-9 success"><%= key_value_array[1]%></td>
+                </tr>
+              <%}%>
+            <% });%>
+            <tr>
+              <th class = "col primary text-info" colspan="2">Performer Information</th>
+            </tr>
+            <tr>
+              <td class = "col-md-3 info"><strong><em>Performer Name</em></strong></td>
+              <td class = "col-md-9 info"><%= lab.performer.performer%></td>
+            </tr>
+            <tr>
+              <td class = "col-md-3 info"><strong><em>Performer ID</em></strong></td>
+              <td class = "col-md-9 info"><%= lab.performer.identifier%></td>
+            </tr>
+            <tr>
+              <td class = "col-md-3 info"><strong><em>Performer's Role</em></strong></td>
+              <td class = "col-md-9 info"><%= lab.performer.role%></td>
+            </tr>
+            <tr>
+              <td class = "col-md-3 info"><strong><em>Insurance</em></strong></td>
+              <td class = "col-md-9 info"><%= lab.performer.actor%></td>
+            </tr>
+
+          </table>
+        <hr>
+        <%} else { %>
+
+
+        <%}%>
+
+      <%}else { %>
+        <% if (labId == lab.identifier || labId == "ALL") { %>
+          <%labFound = 1;}%>
+      <%}%>
+    <%});%>
+    <!--if patient id or lab id is not found, shown the following-->
+    <%if (patientFound == 0 && labFound == 0) { %>
+        <h3 class = "text-danger"> Search error: </h3>
+        <em><h4 > Patient ID (<%=patientId%>) is not in the databse. </h4>
+        <h4 > Lab ID (<%=labId%>) is not in the databse. </h4></em>
+    <% } else { %>
+      <%if (patientFound == 0) { %>
+        <h3 class = "text-danger"> Search error: </h3>
+        <h4 class = "text-danger"> <em>Find Lab ID (<%=labId%>). Patient ID (<%=patientId%>) does not match with the lab ID, or Patient ID (<%=patientId%>) is not in the databse.</em> </h4>
+      <%}%>
+      <%if (labFound == 0) { %>
+        <h3 > Search error: </h3>
+        <h4 > <em>Find patient ID (<%=patientId%>). Lab ID (<%=labId%>) does not match with the patient ID, or Lab ID (<%=labId%>) is not in the databse.</em> </h4>
+      <%}%>
+    <%}%>
+
+
+
+
+
+
+</div>
+<%include ../partials/footer%>

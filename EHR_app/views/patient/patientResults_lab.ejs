@@ -1,0 +1,161 @@
+<%include ../partials/header%>
+<header >
+
+
+        <div class="w3-panel w3-deep-orange">
+          <h1><%=info%></h1>
+        </div>
+
+</header>
+<hr style="width: 100%; color: black; height: 5px; background-color:black;">
+<div class = "w3-container">
+    <!--loop through labs to make sure patient id and lab id match then show data-->
+    <% labs.forEach(function (lab) { %>
+          <!--display patent information-->
+          <table class = "table table-hover table-responsive table-bordered w3-table w3-striped w3-hoverable">
+            <tr class = "w3-green">
+              <th class = "col primary" colspan="2">Patient Information</th>
+            </tr>
+            <tr>
+              <td class = "col-md-3 "><strong><em>Name</em></strong></td>
+              <td class = "col-md-9 "><%= lab.patient_name%></td>
+            </tr>
+            <tr>
+              <td class = "col-md-3 "><strong><em>Patient ID</em></strong></td>
+              <td class = "col-md-9 "><%= lab.patientID%></td>
+            </tr>
+            <tr>
+              <td class = "col-md-3 "><strong><em>Patient informaion retrieved from </em></strong></td>
+              <td class = "col-md-9 "><%= lab.server%></td>
+            </tr>
+            <tr class = "w3-blue">
+              <th class = "col primary" colspan="2">Lab Information</th>
+            </tr>
+            <!--lab information goes here-->
+            <tr>
+              <%if (lab.identifier) { %>
+                <td class = "col-md-3 "><strong><em>Identifier </em></strong></td>
+                <td class = "col-md-9 "><%= lab.identifier%></td>
+              <%}%>
+            </tr>
+            <tr>
+              <%if (lab.id) { %>
+                <td class = "col-md-3 "><strong><em>ID </em></strong></td>
+                <td class = "col-md-9 "><%= lab.id%></td>
+              <%}%>
+            </tr>
+            <tr>
+              <%if (lab.status) { %>
+                <td class = "col-md-3 "><strong><em>Status </em></strong></td>
+                <td class = "col-md-9 "><%= lab.status%></td>
+              <%}%>
+            </tr>
+            <tr>
+              <%if (lab.code) { %>
+                <td class = "col-md-3 "><strong><em>Code </em></strong></td>
+                <td class = "col-md-9 "><%= lab.code%></td>
+              <%}%>
+            </tr>
+            <tr>
+              <%if (lab.effective_date) { %>
+                <td class = "col-md-3 "><strong><em>Effective Date </em></strong></td>
+                <td class = "col-md-9 "><%= lab.effective_date%></td>
+              <%}%>
+            </tr>
+            <tr>
+              <%if (lab.issued_date) { %>
+                <td class = "col-md-3 "><strong><em>Issued Date </em></strong></td>
+                <td class = "col-md-9 "><%= lab.issued_date%></td>
+              <%}%>
+            </tr>
+            <tr>
+              <%if (lab.value ) { %>
+                <td class = "col-md-3 "><strong><em>Value </em></strong></td>
+                <td class = "col-md-9 "><%= lab.value %></td>
+              <%}%>
+            </tr>
+            <tr>
+              <%if (lab.interpretation) { %>
+                <td class = "col-md-3 "><strong><em>Interpretation</em></strong></td>
+                <td class = "col-md-9 "><%= lab.interpretation%></td>
+              <%}%>
+            </tr>
+            <tr>
+              <%if (lab.result) { %>
+                <td class = "col-md-3 "><strong><em>Result</em></strong></td>
+                <td class = "col-md-9 "><%= lab.result%></td>
+              <%}%>
+            </tr>
+            <tr>
+              <%if (lab.codeDiagnosis) { %>
+                <td class = "col-md-3 "><strong><em>Diagnosis Code</em></strong></td>
+                <td class = "col-md-9 "><%= lab.codeDiagnosist%></td>
+              <%}%>
+            </tr>
+            <tr>
+              <%if (lab.context) { %>
+                <td class = "col-md-3 "><strong><em>Context</em></strong></td>
+                <td class = "col-md-9 "><%= lab.context%></td>
+              <%}%>
+            </tr>
+            <tr>
+              <%if (lab.category) { %>
+                <td class = "col-md-3 "><strong><em>Category</em></strong></td>
+                <td class = "col-md-9 "><%= lab.category%></td>
+              <%}%>
+            </tr>
+            <tr>
+              <%if (lab.basedOn) { %>
+                <td class = "col-md-3 "><strong><em>Based On</em></strong></td>
+                <td class = "col-md-9 "><%= lab.basedOn%></td>
+              <%}%>
+            </tr>
+            <tr>
+              <%if (lab.specimen) { %>
+                <td class = "col-md-3 "><strong><em>Specimen</em></strong></td>
+                <td class = "col-md-9 "><%= lab.specimen%></td>
+              <%}%>
+            </tr>
+            <tr>
+              <%if (lab.imagingStudy) { %>
+                <td class = "col-md-3 "><strong><em>Imaging Study</em></strong></td>
+                <td class = "col-md-9 "><%= lab.imagingStudy%></td>
+              <%}%>
+            </tr>
+            <tr>
+              <%if (lab.conclusion) { %>
+                <td class = "col-md-3 "><strong><em>Conclusion</em></strong></td>
+                <td class = "col-md-9 "><%= lab.conclusion%></td>
+              <%}%>
+            </tr>
+            <tr>
+              <%if (lab.presentedForm) { %>
+                <td class = "col-md-3 "><strong><em>Presented Form</em></strong></td>
+                <td class = "col-md-9 "><%= lab.presentedForm%></td>
+              <%}%>
+            </tr>
+            <tr class = "w3-deep-purple">
+              <th class = "col primary" colspan="2">Performer Information</th>
+            </tr>
+            <tr>
+              <td class = "col-md-3 "><strong><em>Performer Name</em></strong></td>
+              <td class = "col-md-9 "><%= lab.performer.performer%></td>
+            </tr>
+            <tr>
+              <td class = "col-md-3 "><strong><em>Performer ID</em></strong></td>
+              <td class = "col-md-9 "><%= lab.performer.identifier%></td>
+            </tr>
+            <tr>
+              <td class = "col-md-3 "><strong><em>Performer's Role</em></strong></td>
+              <td class = "col-md-9 "><%= lab.performer.role%></td>
+            </tr>
+            <tr>
+              <td class = "col-md-3 "><strong><em>Insurance</em></strong></td>
+              <td class = "col-md-9 "><%= lab.performer.actor%></td>
+            </tr>
+
+          </table>
+        <hr style="width: 100%; color: black; height: 5px; background-color:black;">
+      <%});%>
+</div>
+<%include ../partials/footer%>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+    <header>
+        <!-- Make site responsive on mobile/tablet -->
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Lab System</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <link rel="stylesheet" href = "/stylesheets/main.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+    </header>
+
+    <body>
+        <nav class="navbar navbar-default">
+
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                      <span class="sr-only">Toggle navigation</span>
+                      <span class="icon-bar"></span>
+                      <span class="icon-bar"></span>
+                      <span class="icon-bar"></span>
+                    </button>
+
+            <a class="navbar-brand" href="/lab"> Lab System <i class="fas fa-heartbeat"></i></a>
+        </div>
+        <div id="navbar" class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+            <!--<li><a href="/lab">Home <i class="fas fa-home"></i></a></li>-->
+            <li><a  href="/lab/search">Search Lab results   <i class="fa fa-search" aria-hidden="true"></i></a></p></li>
+            <li><a  href="/lab/labinput/patient"><i class="fa fa-cog fa-spin  fa-fw"></i> Input Lab Information To Database</a></li>
+            <li><a href="/patient"> Go to EHR system</a></li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+
+                  <li class="<%= typeof page !== 'undefined' && page === 'login' ? 'active' : '' %>"><a href="/lab/login">Login <i class="fas fa-sign-in-alt"></i></a></li>
+                  <li class="<%= typeof page !== 'undefined' && page === 'register' ? 'active' : '' %>"><a href="/lab/register">Sign Up <i class="fas fa-user-edit"></i></a></li>
+                  <li class="<%= typeof page !== 'undefined' && page === 'register' ? 'active' : '' %>"><a href="/lab/logout">Logout<i class="fas fa-sign-out-alt"></i></a></li>
+          </ul>
+        </div>
+    </div>
+</nav>
+
+
+    <div class="container">

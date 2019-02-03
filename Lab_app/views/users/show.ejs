@@ -1,0 +1,46 @@
+<%include ../partials/header%>
+<div class = "jumbotron">
+    <h1>User Profile</h1>
+</div>
+<div class="container-fluid">
+    <div class = "row col-md-12">
+        <div class= "well col-md-4">
+            <h3>User Name: <%=user.username%></h3>
+            <div class ="thumbnail">
+                <img src=<%=user.avatar%> >
+                <div class = "caption">
+                    <p><strong>User Name: </strong><%=user.username%></p>
+                    <hr>
+                    <p><strong>First Name: </strong><%=user.firstName%></p>
+                    <p><strong>Last Name: </strong><%=user.lastName%></p>
+                    <p><strong>Email: </strong><%=user.email%></p>
+                </div>
+            </div>
+            <p><strong>About <%=user.username%>: </strong><em><%=user.description%></em><p>
+        </div>
+        <div class = "well col-md-8">
+            <h3>Beaches created by <%=user.username%>: </h3>
+            <div class = "row text-center" style="display:flex; flex-wrap:wrap;">
+                <%if(foundBeaches.length===0) {%>
+                    <div class = "col-md-12 text-left">
+                        <p><%=user.username%> did not create any beach.</p>
+                    </div>
+                <%}%>
+                <%foundBeaches.forEach(function (eachBeach){%>
+                    <div class = "col-md-4 col-sm-6">
+                        <div class="thumbnail">
+                            <img src="<%= eachBeach.image %>">
+                            <div class="caption">
+                                <h6><%= eachBeach.name %></h6>
+                            </div>
+                            <p>
+                                <a href = "/beaches/<%= eachBeach._id%>" class = "btn btn-primary">More Info</a>
+                            </p>
+                        </div>
+                    </div>
+                <%});%>
+            </div>
+        </div>
+    </div>
+</div>
+<%include ../partials/footer%>

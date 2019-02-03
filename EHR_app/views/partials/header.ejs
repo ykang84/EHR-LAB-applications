@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+    <header>
+        <!-- Make site responsive on mobile/tablet -->
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>EHR System</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <link rel="stylesheet" href = "/stylesheets/main.css">
+        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/components/accordion.css">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+    </header>
+
+    <body>
+        <nav class="navbar navbar-default bg-primary">
+
+            <div class="container ">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                      <span class="sr-only">Toggle navigation</span>
+                      <span class="icon-bar"></span>
+                      <span class="icon-bar"></span>
+                      <span class="icon-bar"></span>
+                    </button>
+
+            <a class="navbar-brand" href="/patient"> EHR System <i class="fas fa-heartbeat"></i></a>
+        </div>
+        <div id="navbar" class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+            <!--<li><a href="/Patient">Home <i class="fas fa-home"></i></a></li>-->
+            <li><a  href="/patient/search">Search Patient Info <i class="fa fa-search" aria-hidden="true"></i></a></p></li>
+            <li><a  href="/patient/savePatient_ehr">Save Patient Into EHR <i class="fa fa-save" aria-hidden="true"></i></a></p></li>
+            <!--<li><a  href="/patient/savePatient_fhir">Save Patient Into FHIR <i class="fa fa-save" aria-hidden="true"></i></a></p></li> -->
+            <li><a  href="/lab">Go to lab system </a></p></li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+
+                  <li class="<%= typeof page !== 'undefined' && page === 'login' ? 'active' : '' %>"><a href="/patient/login">Login <i class="fas fa-sign-in-alt"></i></a></li>
+                  <li class="<%= typeof page !== 'undefined' && page === 'register' ? 'active' : '' %>"><a href="/patient/register">Sign Up <i class="fas fa-user-edit"></i></a></li>
+                  <li class="<%= typeof page !== 'undefined' && page === 'register' ? 'active' : '' %>"><a href="/patient/logout">Logout<i class="fas fa-sign-out-alt"></i></a></li>
+          </ul>
+        </div>
+    </div>
+</nav>
+
+
+    <div class="container">

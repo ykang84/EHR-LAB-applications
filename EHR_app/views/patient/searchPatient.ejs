@@ -1,0 +1,28 @@
+<%include ../partials/header%>
+<div class="row">
+    <h1 style="text-align: center">Search for Patient results</h1>
+    <div style="width: 50%; margin: 25px auto;">
+        <form action="/patient/search" method="post">
+            Patient ID: <div class="form-group">
+                <input class="form-control" type="text" name="patientID" placeholder="patient ID" required>
+                <p>* Required</p>
+            </div>
+            Patient Full Name:
+            <div class="form-group">
+                <input class="form-control" type="text" name="patientName" placeholder="Patient Name">
+                <p>* Optional</p>
+            </div>
+            <div class="form-group">
+                <button class="btn btn-lg btn-primary btn-block" name="server" value="EHR">Search from EHR <i class="fa fa-search" aria-hidden="true"></i></button>
+            </div>
+            <div class="form-group">
+                <button class="btn btn-lg btn-primary btn-block" name="server" value="FHIR">Search from FHIR <i class="fa fa-search" aria-hidden="true"></i></button>
+            </div>
+            <div class="form-group">
+                <button class="btn btn-lg btn-primary btn-block" name="server" value="LAB">Search from LAB <i class="fa fa-search" aria-hidden="true"></i></button>
+            </div>
+        </form>
+        <a href="/patient">Go Back</a>
+    </div>
+</div>
+<%include ../partials/footer%>

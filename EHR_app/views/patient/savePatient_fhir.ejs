@@ -1,0 +1,49 @@
+<!--show a table which allow input patient information -->
+<%include ../partials/header%>
+
+<header >
+
+
+        <div class="w3-panel w3-deep-orange">
+          <h1>Save patient informaion</h1>
+        </div>
+
+</header>
+<hr style="width: 100%; color: black; height: 5px; background-color:black;">
+
+<form action = "/" method = "post">
+  <div>
+    <input type = "hidden" class = "form-control" name="resourceType"  value = "Patient">
+    <p ><strong>ID:</strong>
+      <input class = "form-control" type="text" name="id"  >
+    </p>
+    <p ><strong>versionId:</strong>
+      <input class = "form-control" type="text" name="versionId"  >
+    </p>
+    <p ><strong>lastUpdated:</strong>
+      <input class = "form-control" type="text" name="lastUpdated"  >
+    </p>
+    <p ><strong>status:</strong>
+      <input class = "form-control" type="text" name="status"  >
+    </p>
+    <p ><strong>Family Name:</strong>
+      <input class = "form-control" type="text" name="family"  >
+    </p>
+    <p ><strong>Given Name:</strong>
+      <input class = "form-control" type="text" name="given"  >
+    </p>
+    <p ><strong>gender:</strong>
+      <input class = "form-control" type="text" name="gender"  >
+    </p>
+    <p ><strong>Date of Birth:</strong>
+      <input class = "form-control" type="text" name="birthDate"  >
+    </p>
+
+  </div>
+  <button class="btn btn-lg btn-warning btn-block">Save Lab information to FHIR <i class="fa fa-search" aria-hidden="true"></i></button>
+
+
+</form>
+
+</div>
+<%include ../partials/footer%>

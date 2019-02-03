@@ -1,0 +1,12 @@
+{
+  "routes": [
+    {
+      "route": "/Lab",
+      "address": "http://localhost:8080"
+    },
+    {
+      "route": "/patient",
+      "address": "http://localhost:8001"
+    }
+  ]
+}

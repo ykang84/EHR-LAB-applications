@@ -1,0 +1,44 @@
+<!--show a table which allow input patient information -->
+<%include ../partials/header%>
+<div class = "container">
+<header >
+
+
+        <div class="w3-panel w3-deep-orange">
+          <h1>Create a new patient</h1>
+        </div>
+
+</header>
+<hr style="width: 100%; color: black; height: 5px; background-color:black;">
+
+<form action = "/patient/savePatient_ehr" method = "post">
+  <div>
+    <p ><strong>ID:</strong>
+      <input class = "form-control" type="text" name="id" required>
+    </p>
+    <p ><strong>Given Name:</strong>
+      <input class = "form-control" type="text" name="given"  required>
+    </p>
+    <p ><strong>Family Name:</strong>
+      <input class = "form-control" type="text" name="family"  required>
+    </p>
+    <p ><strong>Gender:</strong>
+      <input class = "form-control" type="text" name="gender"  required>
+    </p>
+    <p ><strong>Date of Birth:</strong>
+      <input class = "form-control" type="text" name="birthDate"  required>
+    </p>
+    <p ><strong>Health Information:</strong>
+      <input class = "form-control" type="text" name="healthInfo"  required>
+    </p>
+
+  </div>
+  <div>
+    <button class="btn btn-lg btn-primary btn-block">Save Into EHR Database <i class="fa fa-save" aria-hidden="true"></i></button>
+  </div>
+
+
+</form>
+
+</div>
+<%include ../partials/footer%>

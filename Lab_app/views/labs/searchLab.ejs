@@ -1,0 +1,21 @@
+<%include ../partials/header%>
+<div class="row">
+    <h1 style="text-align: center">Search for Lab results</h1>
+    <div style="width: 50%; margin: 25px auto;">
+        <form action="/lab/search" method="post">
+            Patient ID: <div class="form-group">
+                <input class="form-control" type="text" name="patientID" placeholder="patient ID">
+            </div>
+            Lab ID:
+            <div class="form-group">
+                <input class="form-control" type="text" name="labID" placeholder="Lab ID" >
+                <p class = "text-danger">* please input Pateint ID, OR LaB ID, OR both. </p>
+            </div>
+            <div class="form-group">
+                <button class="btn btn-lg btn-success btn-block">Search   <i class="fa fa-search" aria-hidden="true"></i></button>
+            </div>
+        </form>
+        <a href="/lab">Go Back</a>
+    </div>
+</div>
+<%include ../partials/footer%>

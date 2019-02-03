@@ -1,0 +1,50 @@
+<%include ../partials/header%>
+<div class="row">
+    <div class = 'jumbotron'>
+      <h2 style="text-align: left">Step 1: get patient information from remote servers</h2>
+      <h3 class = "text-danger"><%=info%></h3>
+    </div>
+    <div class = "col-md-12 container img-thumbnail">
+        <h2>Get patent information from EHR: </h2>
+        <hr>
+        <form action="/lab/inputLabInfo_EHR" method="get">
+            Patient ID: <div class="form-group">
+                <input class="form-control" type="text" name="patientID" placeholder="patient ID" value = "101" required>
+                <p calss = "text-danger">* required </p>
+            </div>
+
+                <input class="form-control" type="hidden" name="server" value="EHR" >
+            <div class="form-group">
+                <button class="btn btn-lg btn-warning btn-block">Get Patient information from EHR <i class="fa fa-search" aria-hidden="true"></i></button>
+            </div>
+        </form>
+        <a href="/lab">Go Back</a>
+    </div>
+    <div class = "container">
+      <br>
+      <hr>
+      <br>
+    </div>
+    <div class = "col-md-12 container img-thumbnail">
+        <h2>Get patent information from FHIR:</h2>
+        <hr>
+        <form action="/lab/inputLabInfo" method="get">
+            Patient ID: <div class="form-group">
+                <input class="form-control" type="text" name="patientID" placeholder="patient ID" required value = "396527">
+                <p calss = "text-danger">* required </p>
+            </div>
+            Patient Name:
+            <div class="form-group">
+                <input class="form-control" type="text" name="name" placeholder="Patient Name">
+                <p>* optional</p>
+            </div>
+              <input class="form-control" type="hidden" name="server" value="fhir" >
+            <div class="form-group">
+                <button class="btn btn-lg btn-primary btn-block">Get Patient information from FHIR <i class="fa fa-search" aria-hidden="true"></i></button>
+            </div>
+        </form>
+        <a href="/lab">Go Back</a>
+    </div>
+
+</div>
+<%include ../partials/footer%>

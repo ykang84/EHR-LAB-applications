@@ -1,0 +1,111 @@
+<%include ../partials/header%>
+<div class="row">
+    <div class = 'jumbotron'>
+      <h2 class = "text-success"><%=info%></h2>
+      <h2 style="text-align: left">Step 2: save lab information of this patient to the database </h2>
+
+    </div>
+    <div class = "col container img-thumbnail">
+        <h2 class= "text-primary primary">Patient inforamtion:</h2>
+        <table class = "table table-hover table-responsive table-bordered">
+          <tr>
+            <td class = "col-md-3">Patient ID</td>
+            <td><%=patientInfo.entry[0].resource.id%></td>
+          </tr>
+          <tr>
+            <td class = "col-md-3">Patient Name</td>
+            <td><%=patientInfo.entry[0].resource.name[0].given[0]%> <%=patientInfo.entry[0].resource.name[0].family%> </td>
+          </tr>
+          <tr>
+            <td class = "col-md-3">Date of birth</td>
+            <%if (patientInfo.entry[0].resource.birthDate) { %>
+              <td><%=patientInfo.entry[0].resource.birthDate%> </td>
+            <%}%>
+
+          </tr>
+        </table>
+        <hr>
+        <h2 class= "text-primary primary">Input lab information for <%=patientInfo.entry[0].resource.name[0].given[0]%> <%=patientInfo.entry[0].resource.name[0].family%> </h2>
+        <form action="/lab/inputLabInfo" method="post">
+        	<div>
+        		<input type="hidden" name="patient_identifier"  value= "<%=patientInfo.entry[0].resource.id%>" ></p>
+        		<input type="hidden" name="patient_name"  value= "<%=patientInfo.entry[0].resource.name[0].given[0]%> <%=patientInfo.entry[0].resource.name[0].family%> "></p>
+            <input type="hidden" name="patient_server"  value= "<%=server%>"></p>
+        	</div>
+          <div>
+        		<h3><strong>Operator Information</strong></h3>
+        		<p><label for="performer_identifier"><strong>Performer ID:</strong></label>
+        		<input class = "form-control" type="text" name="performer_ID" value="825" required></p>
+        		<p><label for="Performer Name"><strong>Performer Name:</strong></label>
+        		<input class = "form-control" type="text" name="performer_name" value="L. Beiman" required></p>
+        		<p><label for="performer_role"><strong>Performer Position:</strong></label>
+        		<input class = "form-control" type="text" name="performer_role" id="Performer Position" value="Doctor" required></p>
+        		<p><label for="Insurance"><strong>Insurance:</strong></label>
+        		<input class = "form-control" type="text" name="insurance" id="Insurance" value="blue cross & blue shield" required></p>
+        	</div>
+        	<div>
+        		<h3><strong>Lab Information</strong></h3>
+        		<p><label for="Identifier"><strong>Identifier:</strong></label>
+        		<input class = "form-control" type="text" name="identifier" value="62413" required>
+        		</p>
+        		<p><label for="ID"><strong>ID:</strong></label>
+        		<input class = "form-control" type="text" name="id" value="f005" required>
+        		</p>
+        		<p><label for="Status"><strong>Status:</strong></label>
+        		<input class = "form-control" type="text" name="status" value="final" required>
+        		</p>
+        		<p><label for="Code"><strong>Code:</strong></label>
+        		<input class = "form-control" type="text" name="code" id="code" value="Glucose [Moles/volume] in Blood" required>
+        		</p>
+        		<p><label for="effective date"><strong>effective date:</strong></label>
+        		<input class = "form-control" type="date" name="effective_date" id="effective date" value="2007-05-01" required>
+        		</p>
+        		<p><label for="issue date"><strong>issue date:</strong></label>
+        		<input class = "form-control" type="date" name="issued_date" id="issue_date" value="2013-03-04" required>
+        		</p>
+
+        		<p><label for="value"><strong>value:</strong></label>
+        		<input class = "form-control" type="text" name="value" id="" value="6.3 mmol/l" required>
+        		</p>
+        		<p ><label for="interpretation"><strong>interpretation:</strong></label>
+        		<input class = "form-control" type="textarea" name="interpretation" id="interpretation" value="High" required>
+        		</p>
+            <p ><label for="result"><strong>results:</strong></label>
+        		<input class = "form-control" type="text" name="result" id="interpretation" value="">
+        		</p>
+            <p ><strong>Diagnosis code:</strong>
+        		<input class = "form-control" type="text" name="codeDiagnosis"  >
+        		</p>
+            <p ><strong>context:</strong>
+        		<input class = "form-control" type="text" name="context"  >
+        		</p>
+            <p ><strong>category:</strong>
+        		<input class = "form-control" type="text" name="category"  >
+        		</p>
+            <p ><strong>Based on:</strong>
+        		<input class = "form-control" type="text" name="basedOn"  >
+        		</p>
+            <p ><strong>specimen:</strong>
+        		<input class = "form-control" type="text" name="specimen"  >
+        		</p>
+            <p ><strong>Imaging Study:</strong>
+        		<input class = "form-control" type="text" name="imagingStudy"  >
+        		</p>
+            <strong>Conclusion:</strong>
+        		<input class = "form-control" type="textarea" name="conclusion"  >
+            <p ><strong>Presented Form:</strong>
+        		<input class = "form-control" type="text" name="presentedForm"  >
+        		</p>
+
+
+
+        	</div>
+          <button class="btn btn-lg btn-danger btn-block">Save Lab information to our database <i class="fa fa-search" aria-hidden="true"></i></button>
+
+        </form>
+
+        <a href="/lab">Go Back</a>
+    </div>
+
+</div>
+<%include ../partials/footer%>
